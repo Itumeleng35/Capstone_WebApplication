@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Web App</title>
+    <!-- Include other CSS and JS files as needed -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.8.2/plotly.min.js"></script>
+    <style>
+        /* Add any custom CSS styles here */
+    </style>
+</head>
+
+<body x-data="HomepageData()">
+    <style>
+        body {
+          padding: 20px;
+          text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.5);
+          font-size:1rem; 
+          color: whitesmoke;
+          font-weight: bold;
+          background-image: url("images/images (5).jpg");
+          background-size:cover;
+          background-position:center;
+          min-height:100vh;
+
+          
+        }
+      </style>
+    <!-- Navbar and other common elements go here -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Your Web App</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="predictions.html">Predictive Analysis</a></li>
+                <li><a href="/result">Recommendations</a></li>
+                <li><a href="About_us.html">About Us</a></li>
+                <li><a href="Mission.html">Mission & Objectives</a></li>
+                <!-- Add Logout button when the user is logged in -->
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Footer and other common elements go here -->
+
+    <h1>Login Page</h1>
+    <form id="login-form">
+        <div class="input-field">
+            <input id="username" type="text" class="validate" x-model="username">
+            <label for="username">Username</label>
+        </div>
+        <div class="input-field">
+            <input id="password" type="password" class="validate" x-model="password">
+            <label for="password">Password</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action" x-on:click="login">Login
+            <button x-on:click="logout" x-show="username && cartId">Logout</button>
+        </button>
+    </form>
+
+
+    <script>
+        // Handle login form submission
+        document.querySelector('#login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const username = document.querySelector('#username').value;
+            const password = document.querySelector('#password').value;
+
+            // Implement your login logic here, e.g., send a POST request to the server
+            // If login is successful, you can redirect the user to the dashboard
+            // Example:
+            fetch('/login', {
+                method: 'POST',
+                body: JSON.stringify({ username, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Login failed. Please check your credentials.');
+                }
+            });
+        });
+    </script>
+
+
+
+    <script>
+        // Add any global JavaScript code here
+
+        // Example: Handle the click event for the "Home" widget
+        document.querySelector('#home-widget').addEventListener('click', function () {
+            window.location.href = '/';
+        });
+
+        // Repeat the above pattern for other widgets (Data Trend Analysis, Predictive Analysis, etc.)
+    </script>
+
+    <script>
+         const authData = {
+        isLoggedIn: false,
+        loginUsername: '',
+        loginPassword: '',
+        registerUsername: '',
+        registerPassword: '',
+        login() {
+            // Implement login logic here
+            // Set authData.isLoggedIn to true on successful login
+        },
+        register() {
+            // Implement registration logic here
+            // Set authData.isLoggedIn to true on successful registration
+        },
+        logout() {
+            // Implement logout logic here
+            // Set authData.isLoggedIn to false
+        },
+    };
+    </script>
+
+    <div class="container">
+        <div class="col s6 ">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <h1 class="center-align" >Data Trend Analysis</h1>
+                    <td><img src="images/download (3).png" width="500" a href="Home.html" ></td>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="container">
+            <div class="col s6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <h1 class="center-align" >Prediction Analysis</h1>
+                        <td><img src="images/download (1).jpg" width="500" @click="predictions.html" ></td>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="col s6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <h1 class="center-align"a href="Recommendations.html" >Recommendations</h1>
+                        <td><img src="images/images (3).jpg" width="500" >
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <script src="scripts.js"></script>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        &copy; 2023 Your Company. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>

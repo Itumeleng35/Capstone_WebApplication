@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.8.2/plotly.min.js"></script>
+</head>
+
+<body x-data="HomepageData()">
+    <style>
+        body {
+          padding: 20px;
+          text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.5);
+          font-size:1rem; 
+          color: whitesmoke;
+          font-weight: bold;
+          background-image: url("images/download (3) 11.jpg");
+          background-size:cover;
+          background-position:center;
+          min-height:100vh;
+
+          
+        }
+      </style>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Predictive Analysis menu</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="/result">Recommendations</a></li>
+                <li><a href="About_us.html">About Us</a></li>
+                <li><a href="Mission.html">Mission & Objectives</a></li>
+                <!-- Add Logout button when the user is logged in -->
+            </ul>
+        </div>
+        <div>
+            Version <strong x-text="version" ></strong>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Predictive Analysis</span>
+                        <!-- Predictive Analysis Form -->
+                        <div id="predictive-analysis-form" >
+                            <h1 class="center-align">Select Marketing Avenue</h1>
+                            <select id="marketing-avenue-select" x-model="marktingavenue">
+                                <option value="social_media">Social Media</option>
+                                <option value="Newspaper">Newspaper</option>
+                                <option value="Television">TV advertising</option>
+                                <option value="Radio">Radio</option>
+                                <option value="Influncers">Influncers</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                            <div class="input-field">
+                                <input id="budget-amount" type="number" class="validate" x-model="budgetAmount">
+                                <label for="budget-amount">Budgeted Amount</label>
+                            </div>
+                            <div>
+                                <button class="btn waves-effect waves-light" @click="dataAnalysisPrediction()">Predict</button>
+                        </div>
+
+                        <!-- Prediction Result Container -->
+                        <div id="prediction-result" x-show="isPredictionSuccess">
+                            <p>Predicted Sales for {{ marketingAvenue }}: ${{ predictionResult.toFixed(2) }}</p>
+                        </div>
+
+                        <!-- Try Again Button -->
+                        <button class="btn waves-effect waves-light" x-show="isTryAgainVisible" @click="retryLoad()">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <script src="scripts.js"></script>
+</body>
+
+</html>
