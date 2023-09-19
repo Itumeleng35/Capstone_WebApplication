@@ -12,6 +12,31 @@ document.addEventListener("alpine:init", () => {
             isPredictionSuccess: false,
             isTryAgainVisible: false,
 
+            // const authData = {
+            //     isLoggedIn: false,
+            //     loginUsername: '',
+            //     loginPassword: '',
+            //     registerUsername: '',
+            //     registerPassword: '',
+                // login() {
+                    // Implement login logic here
+                    // Set authData.isLoggedIn to true on successful login
+                // },
+                // register() {
+                    // Implement registration logic here
+                    // Set authData.isLoggedIn to true on successful registration
+                // },
+                // logout() {
+                    // Implement logout logic here
+                    // Set authData.isLoggedIn to false
+            //     },
+            // };
+
+
+
+
+
+
             // Function to handle file upload
             loadDataset() {
                 const fileInput = document.getElementById('dataset-file');
