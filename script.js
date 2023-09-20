@@ -1,18 +1,18 @@
 // import LongestWord from './public/home.js';
-// import express from "express";
+import express from "express";
 
 
 
-const express = require('express');
-const session = require('express-session');
-const bodyParser = require('body-parser');
+// const express = require('express');
+// const session = require('express-session');
+// const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
 // Middleware setup
-app.use(session({ secret: 'your_secret_key', resave: true, saveUninitialized: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(session({ secret: 'your_secret_key', resave: true, saveUninitialized: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 // Serve static files (HTML, CSS, JS)
 
