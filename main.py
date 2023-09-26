@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
 import os
 from wtforms.validators import InputRequired
+from scripts1 import process_env
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -23,12 +24,11 @@ def home():
             filename = secure_filename(file.filename)
             save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(save_path)
-            return "File has been uploaded successfully."
+
+            # Process the uploaded CSV file and get the data
+            data = process_env(save_path)
+
+            # Render a template with the data
+            return render_template('result.html', data=data)
+
     return render_template('Home.html', form=form)
-
-@app.route('/page1')
-def page1():
-    return render_template('main.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
